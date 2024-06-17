@@ -1,0 +1,3 @@
+void hello_from_static_lib() {
+	printf("Hello World\n");
+}

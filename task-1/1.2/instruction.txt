@@ -1,0 +1,22 @@
+- Write libstatic.c with "hello_from_static_lib()" function (without header includes)
+-----------------------------------
+void hello_from_static_lib() {
+    printf("Hello World\n");
+}
+-----------------------------------
+- Compile without linking using the command: "gcc -c libstatic.c -o libstatic.o"
+- Convert the library into an archive using the command "ar -rcs libstatic.a libstatic.o"
+(-s write an object-file index into the archive, -c create the archive and -r insert into archive with replacement)
+- пишем hello2.c с использованием функции (хедер не нужен)
+- Write hello.c using "hello_from_static_lib()" function (without header includes)
+-----------------------------------
+int main() {
+    hello_from_static_lib();
+    return 0;
+}
+-----------------------------------
+- Compile hello.c using the command "gcc hello.c -L . -l static -o hello", where:
+	- "-L ." means searching for libraries in the "." directory. (i.e. in the current directory)
+	- "-l static" means searching for a lib named "static", or a file called libstatic.a 
+			(the "lib" prefix and ".a" suffix are added by the linker themselves)
+	- "-o hello" means output file name
